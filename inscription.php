@@ -43,22 +43,22 @@ if(isset($_POST["in"]) && $_POST["in"] == "S'inscrire") {
     <br />
 
     <label for="login">Login :</label>
-    <input type="text" name="login">
+    <input type="text" name="login" required>
 
     <label for="email">Email :</label>
-    <input type="email" name="email">
+    <input type="email" name="email" required>
 
     <label for="firstname">Prenom :</label>
-    <input type="text" name="firstname">
+    <input type="text" name="firstname" required>
 
     <label for="lastname">Nom :</label>
-    <input type="text" name="lastname">
+    <input type="text" name="lastname" required>
 
     <label for="password">Password :</label>
-    <input type="password" name="password">
+    <input type="password" name="password" required>
 
     <label for="confirm-password">Confirm password :</label>
-    <input type="password" name="confirm-password">
+    <input type="password" name="confirm-password" required>
 
     <input type="submit" class="btn" name="in" value="S'inscrire"></input>
 </form>

@@ -111,7 +111,7 @@ class User {
         return $getFirstname;
     }
 
-    public function getFirstname() {
+    public function getLastname() {
 
         $db = mysqli_connect('localhost','root','','classes');
         $sql = "SELECT lastname FROM utilisateurs where login = '$login'";

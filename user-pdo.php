@@ -8,12 +8,11 @@ class UserPDO {
     public $firstname;
     public $lastname;
  
-    public function __construct() {
-
-        $db = new PDO('localhost','root','','classes');
-        $sql = $db->prepare("INSERT INTO utilisateurs(login, password, email, firstname, lastname)
-                            VALUES('$login', '$password', '$email', '$firstName', '$lastName')");
-        $sql->execute();
+    public function __construct($login ="", $email ="", $firstName ="", $lastName= "") {
+        $this->login = $login;
+        $this->email = $email;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
     }
 
     public function connect($login, $password) {

@@ -78,4 +78,23 @@ class User {
             return false;
         }
     }
+
+    public function getAllInfos() {
+
+        $db = mysqli_connect('localhost','root','','classes');
+        $sql = "SELECT * FROM utilisateurs WHERE login='".$_SESSION['login']."'";
+        $result = mysqli_query($db,$sql);
+        $userSession = mysqli_fetch_all($result,MYSQLI_ASSOC);
+        return $userSession;
+    }
+
+    
+    public function getLogin() {
+
+        $db = mysqli_connect('localhost','root','','classes');
+        $sql = "SELECT login FROM utilisateurs where login = '$login'";
+        $result = mysqli_query($db, $sql);
+        $getLogin = mysqli_fetch_assoc($result);
+        return $getLogin;
+    }
 }

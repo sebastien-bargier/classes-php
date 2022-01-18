@@ -1,6 +1,7 @@
 <?php
 
 class User {
+
     private $id;
     public $login;
     public $email;
@@ -18,7 +19,7 @@ class User {
 
         $db = mysqli_connect('localhost','root','','classes');
         $sql = mysqli_prepare($db, "INSERT INTO utilisateurs(login, password, email, firstname, lastname)
-        VALUES('$login', '$password', '$email', 'f$irstName', '$lastName')");
+        VALUES('$login', '$password', '$email', '$firstName', '$lastName')");
         mysqli_stmt_execute($sql);
     }
 
@@ -39,6 +40,42 @@ class User {
         } else {
 
             echo "le mot de passe est incorrect";
+        }
+    }
+    
+    public function disconnect() {
+
+        session_destroy();
+        header('Location: connexion.php');
+    }
+
+    public function delete($login) {
+
+        $db = mysqli_connect('localhost','root','','classes');
+        $sql = "DELETE FROM utilisateurs WHERE login = $login";
+        $result = mysqli_query($db,$sql);
+    }
+
+    public function update($login, $password, $email, $firstName, $lastName) {
+        $db = mysqli_connect('localhost','root','','classes');
+        $sql = "SELECT * FROM `utilisateurs` WHERE login ='".$_SESSION['login']."'";
+        $result = mysqli_query($db, $sql);
+        $result = mysqli_fetch_assoc($result);
+        $this->id = $result['id'];
+
+        $sql = "UPDATE utilisateurs SET login = '$login', password = '$password', email = '$email', firstname = '$firstName', lastname = '$lastName' WHERE id = $this->id";
+        $update = mysqli_query($db, $sql);
+
+        if(isset($update)) {
+            echo "Votre profil à été modifié.";
+        }
+    }
+
+    public function isConnected() {
+        if (isset($_SESSION['login'])) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

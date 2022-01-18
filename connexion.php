@@ -1,7 +1,10 @@
 <?php
+session_start();
 require 'user.php';
+require 'user-pdo.php';
 
 $user = new User();
+$user = new UserPDO();
 
 
 if(isset($_POST['co']) && $_POST['co'] == 'Se Connecter') {
@@ -34,10 +37,10 @@ if(isset($_POST['co']) && $_POST['co'] == 'Se Connecter') {
     <br />
 
     <label for="login">Login</label>
-    <input type="text" name="login">
+    <input type="text" name="login" required>
 
     <label for="password">Password</label>
-    <input type="password" name="password">
+    <input type="password" name="password" required>
 
     <input type="submit" class="btn" name="co" value="Se Connecter"></input>
 </form>

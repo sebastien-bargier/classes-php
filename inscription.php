@@ -1,8 +1,10 @@
 <?php
 
-include 'user.php';
+require 'user.php';
+require 'user-pdo.php';
 
-$newUser = new User();
+$user = new User();
+$user = new UserPDO();
 
 if(isset($_POST["in"]) && $_POST["in"] == "S'inscrire") {
         

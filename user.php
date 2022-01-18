@@ -57,12 +57,8 @@ class User {
     }
 
     public function update($login, $password, $email, $firstName, $lastName) {
-        $db = mysqli_connect('localhost','root','','classes');
-        $sql = "SELECT * FROM `utilisateurs` WHERE login ='".$_SESSION['login']."'";
-        $result = mysqli_query($db, $sql);
-        $result = mysqli_fetch_assoc($result);
-        $this->id = $result['id'];
 
+        $db = mysqli_connect('localhost','root','','classes');
         $sql = "UPDATE utilisateurs SET login = '$login', password = '$password', email = '$email', firstname = '$firstName', lastname = '$lastName' WHERE id = $this->id";
         $update = mysqli_query($db, $sql);
 
@@ -88,7 +84,6 @@ class User {
         return $userSession;
     }
 
-    
     public function getLogin() {
 
         $db = mysqli_connect('localhost','root','','classes');
@@ -97,4 +92,32 @@ class User {
         $getLogin = mysqli_fetch_assoc($result);
         return $getLogin;
     }
+
+    public function getEmail() {
+
+        $db = mysqli_connect('localhost','root','','classes');
+        $sql = "SELECT email FROM utilisateurs where login = '$login'";
+        $result = mysqli_query($db, $sql);
+        $getLogin = mysqli_fetch_assoc($result);
+        return $getEmail;
+    }
+    
+    public function getFirstname() {
+
+        $db = mysqli_connect('localhost','root','','classes');
+        $sql = "SELECT firstname FROM utilisateurs where login = '$login'";
+        $result = mysqli_query($db, $sql);
+        $getLogin = mysqli_fetch_assoc($result);
+        return $getFirstname;
+    }
+
+    public function getFirstname() {
+
+        $db = mysqli_connect('localhost','root','','classes');
+        $sql = "SELECT lastname FROM utilisateurs where login = '$login'";
+        $result = mysqli_query($db, $sql);
+        $getLogin = mysqli_fetch_assoc($result);
+        return $getLastname;
+    }
+
 }

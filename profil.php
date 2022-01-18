@@ -1,8 +1,12 @@
 <?php
 session_start();
-include 'user.php';
+
+require 'user.php';
+require 'user-pdo.php';
 
 $user = new User();
+$user = new UserPDO();
+
 $userSession = new User();
 $getLogin = new User();
 var_dump($userSession);
